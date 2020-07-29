@@ -26,14 +26,15 @@ public class BrowserManager extends Util{
         }
         else if(browser.equalsIgnoreCase("firefox")) {
 
-            System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\BrowserDriver\\geckodriver.exe");
-            File pathToBinary = new File("src\\test\\resources\\BrowserDriver\\firefox.exe");
-            FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+            System.setProperty("webdriver.gecko.driver"
+                    ,"src\\test\\resources\\BrowserDriver\\geckodriver.exe");
+//            File pathToBinary = new File("C:\\Users\\patel\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
+//            FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
 
             //Now you can Initialize marionette driver to launch firefox
             DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-            FirefoxOptions options = new FirefoxOptions();
-            capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options.setBinary(ffBinary));
+//            FirefoxOptions options = new FirefoxOptions();
+//            capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options.setBinary(ffBinary));
             capabilities.setCapability("marionette", true);
 
             driver = new FirefoxDriver();
@@ -41,7 +42,7 @@ public class BrowserManager extends Util{
             driver.get(loadProperty.getProperty("url"));
         }
         else if(browser.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.IEDriverServer.driver", "src\\test\\resources\\BrowserDriver\\IEDriverServer.exe");
+            System.setProperty("webdriver.ie.driver", "src\\test\\resources\\BrowserDriver\\IEDriverServer.exe");
             driver = new InternetExplorerDriver();
             System.out.println(loadProperty.getProperty("url"));
             driver.get(loadProperty.getProperty("url"));
